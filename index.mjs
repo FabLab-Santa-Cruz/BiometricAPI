@@ -67,21 +67,22 @@ const test = async () => {
   try {
     await zkInstance.getRealTimeLogs(async (data) => {
       //Post to BACKEND_ENDPOINT
-      if (process.env.BACKEND_ENDPOINT === undefined) {
+      if (
+        process.env.BACKEND_ENDPOINT === undefined ||
+        process.env.BACKEND_ENDPOINT === ""
+      ) {
         console.warn("BACKEND_ENDPOINT is not defined");
         console.log(data);
         return;
       }
       if (process.env.API_KEY === undefined) {
         console.warn("API_KEY is not defined");
-        console.log(data);
-        return;
       }
       await fetch(process.env.BACKEND_ENDPOINT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "api-key": process.env.API_KEY,
+          "api-key": process.env.API_KEY ?? "",
         },
         body: JSON.stringify(data),
       });
