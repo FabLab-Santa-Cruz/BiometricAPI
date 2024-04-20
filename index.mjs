@@ -16,6 +16,10 @@ const test = async () => {
   //=================AUTH===================
   app.all("*", checkUser);
   function checkUser(req, res, next) {
+    if (process.env.API_KEY === undefined || process.env.API_KEY === "") {
+      next();
+      return;
+    }
     const apiKey = req.headers["api-key"];
     if (apiKey !== process.env.API_KEY) {
       return res.status(401).send("Unauthorized");
