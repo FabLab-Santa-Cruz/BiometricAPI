@@ -1,0 +1,9 @@
+services:
+  app:
+    restart: always
+    network_mode: host
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env

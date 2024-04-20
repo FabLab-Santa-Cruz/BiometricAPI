@@ -1,0 +1,11 @@
+{
+  "name": "biometrico",
+  "version": "1.0.0",
+  "main": "index.mjs",
+  "license": "MIT",
+  "dependencies": {
+    "dayjs": "^1.11.10",
+    "express": "^4.19.2",
+    "zklib-js": "^1.3.5"
+  }
+}
